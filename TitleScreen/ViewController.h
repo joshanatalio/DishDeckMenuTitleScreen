@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController {
+    IBOutlet UIScrollView *scroller;
+}
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *restaurantButtons;
 
+@property(strong, nonatomic) NSMutableArray *dataArray;
+@property(strong, nonatomic) NSMutableArray *picNames;
 @end
