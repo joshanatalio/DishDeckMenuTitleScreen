@@ -106,7 +106,7 @@
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    MenuCell *cell = (MenuCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_NAME forIndexPath:indexPath];
+    MenuCell *cell = (MenuCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_NAME forIndexPath:indexPath];;;
     
     
     NSString *string = [foodPicArray objectAtIndex:indexPath.row];
@@ -123,7 +123,7 @@
     
     
     [cell.layer setBorderWidth:2.0f];
-    [cell.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [cell.layer setBorderColor:[UIColor blackColor].CGColor];
     
     return cell;
 }
