@@ -657,6 +657,7 @@ static BOOL MZFromSheetControllerIsViewControllerBasedStatusBarAppearance(void) 
     self.view.layer.shadowRadius = self.shadowRadius;
     self.view.layer.shadowOpacity = self.shadowOpacity;
     self.view.frame = self.presentedFSViewController.view.frame;
+ 
 }
 
 - (void)setupPresentedFSViewControllerFrame
@@ -803,6 +804,7 @@ static BOOL MZFromSheetControllerIsViewControllerBasedStatusBarAppearance(void) 
     if ([self.presentedFSViewController isKindOfClass:[UINavigationController class]]) {
         ((UINavigationController *)self.presentedFSViewController).navigationBar.translucent = NO;
     }
+
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration

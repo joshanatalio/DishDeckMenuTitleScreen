@@ -132,7 +132,7 @@
 }
 
 
--(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     UIImage *image = [UIImage imageNamed:[foodPicArray objectAtIndex:indexPath.row]];
     if(image)
     {
@@ -162,6 +162,7 @@
     
         MZFormSheetController *vc = [segue destinationViewController];
         vc.foodView.image = sender;
+     
         
        
     }
