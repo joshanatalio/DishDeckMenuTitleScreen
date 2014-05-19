@@ -11,5 +11,5 @@
 @interface MenuCell : UICollectionViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (nonatomic, strong) IBOutlet UILabel *displayLabel;
-
+@property (nonatomic, strong) NSString *foodPictureName;
 @end

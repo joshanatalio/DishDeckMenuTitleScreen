@@ -114,7 +114,8 @@
     NSString *string = [foodPicArray objectAtIndex:indexPath.row];
     
     if(string){
-        NSLog(string);
+       // NSLog(string);
+        cell.foodPictureName = string;
         cell.backgroundImage.image =  [UIImage imageNamed:string];
     }
     else
@@ -132,8 +133,12 @@
 
 
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    [self performSegueWithIdentifier:@"PopUpTest" sender:self];
+    UIImage *image = [UIImage imageNamed:[foodPicArray objectAtIndex:indexPath.row]];
+    if(image)
+    {
+        NSLog([foodPicArray objectAtIndex:indexPath.row]);
+    }
+    [self performSegueWithIdentifier:@"PopUpTest" sender:image];
     
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -155,6 +160,9 @@
         [[MZFormSheetBackgroundWindow appearance] setBlurRadius:2.0];
         [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:[UIColor clearColor]];
     
+        MZFormSheetController *vc = [segue destinationViewController];
+        vc.foodView.image = sender;
+        
        
     }
         
