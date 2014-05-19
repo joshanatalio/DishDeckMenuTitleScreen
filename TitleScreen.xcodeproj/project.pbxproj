@@ -10,7 +10,6 @@
 		1E9FFEC82117400CAD775064 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76B7A891C251457F8692B12E /* libPods.a */; };
 		6F2B239C192040D80046CF88 /* MenuPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B239B192040D80046CF88 /* MenuPictureViewController.m */; };
 		6F46F28919130EE90002F4E7 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F46F28819130EE90002F4E7 /* PageContentViewController.m */; };
-		6F5988441929AC2E0070831E /* PopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F5988431929AC2E0070831E /* PopUpViewController.m */; };
 		6FD312291911C41D0019F63A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FD312281911C41D0019F63A /* Foundation.framework */; };
 		6FD3122B1911C41D0019F63A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FD3122A1911C41D0019F63A /* CoreGraphics.framework */; };
 		6FD3122D1911C41D0019F63A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FD3122C1911C41D0019F63A /* UIKit.framework */; };
@@ -57,8 +56,6 @@
 		6F2B239B192040D80046CF88 /* MenuPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuPictureViewController.m; sourceTree = "<group>"; };
 		6F46F28719130EE90002F4E7 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
 		6F46F28819130EE90002F4E7 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
-		6F5988421929AC2E0070831E /* PopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpViewController.h; sourceTree = "<group>"; };
-		6F5988431929AC2E0070831E /* PopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpViewController.m; sourceTree = "<group>"; };
 		6FD312251911C41D0019F63A /* TitleScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TitleScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FD312281911C41D0019F63A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6FD3122A1911C41D0019F63A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -170,8 +167,6 @@
 				6FFB57C11917318E001110C6 /* MenuCell.m */,
 				6F2B239A192040D80046CF88 /* MenuPictureViewController.h */,
 				6F2B239B192040D80046CF88 /* MenuPictureViewController.m */,
-				6F5988421929AC2E0070831E /* PopUpViewController.h */,
-				6F5988431929AC2E0070831E /* PopUpViewController.m */,
 			);
 			path = TitleScreen;
 			sourceTree = "<group>";
@@ -374,7 +369,6 @@
 				6FFB57C21917318E001110C6 /* MenuCell.m in Sources */,
 				6FD3123F1911C41D0019F63A /* ViewController.m in Sources */,
 				6FD312391911C41D0019F63A /* AppDelegate.m in Sources */,
-				6F5988441929AC2E0070831E /* PopUpViewController.m in Sources */,
 				6F46F28919130EE90002F4E7 /* PageContentViewController.m in Sources */,
 				6FD312351911C41D0019F63A /* main.m in Sources */,
 				6F2B239C192040D80046CF88 /* MenuPictureViewController.m in Sources */,

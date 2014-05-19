@@ -151,7 +151,12 @@
         formSheet.didPresentCompletionHandler = ^(UIViewController *presentedFSViewController) {
         
         };
-        }
+        [[MZFormSheetBackgroundWindow appearance] setBackgroundBlurEffect:YES];
+        [[MZFormSheetBackgroundWindow appearance] setBlurRadius:5.0];
+        [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:[UIColor clearColor]];
+    
+        
+    }
         
         
     
