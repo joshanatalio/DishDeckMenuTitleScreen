@@ -8,6 +8,8 @@
 
 #import "MenuPictureViewController.h"
 #import "MenuCell.h"
+#import <MZFormSheetController.h>
+#import <MZFormSheetSegue.h>
 #define CELL_COUNT 12
 #define CELL_NAME @"MenuCell"
 
@@ -129,6 +131,31 @@
 }
 
 
+-(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [self performSegueWithIdentifier:@"PopUpTest" sender:self];
+    
+}
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"PopUpTest"])
+    {
+        MZFormSheetSegue *formSheetSegue = (MZFormSheetSegue *)segue;
+        MZFormSheetController *formSheet = formSheetSegue.formSheetController;
+        formSheet.transitionStyle = MZFormSheetTransitionStyleBounce;
+        formSheet.cornerRadius = 8.0;
+        formSheet.didTapOnBackgroundViewCompletionHandler = ^(CGPoint location) {
+        };
+        
+        formSheet.shouldDismissOnBackgroundViewTap = YES;
+        formSheet.didPresentCompletionHandler = ^(UIViewController *presentedFSViewController) {
+        
+        };
+        }
+        
+        
+    
+}
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     return [self.cellSizes[indexPath.item] CGSizeValue];
