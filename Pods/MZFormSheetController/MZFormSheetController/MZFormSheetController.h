@@ -121,8 +121,9 @@ typedef void(^MZFormSheetTransitionCompletionHandler)();
  MZFormSheetController (self) --> presentedFSViewController
  */
 @property (nonatomic, readonly, strong) UIViewController *presentedFSViewController;
-@property (weak, nonatomic) IBOutlet UIImageView *foodView;
 
+@property (weak, nonatomic) IBOutlet UIImageView *foodPicImageView;
+@property (strong, nonatomic) UIImage *pic;
 /**
  The view controller that is presenting this form sheet controller.
  This is only set up if you use UIViewController (MZFormSheet) category to present form sheet controller.

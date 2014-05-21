@@ -786,11 +786,22 @@ static BOOL MZFromSheetControllerIsViewControllerBasedStatusBarAppearance(void) 
 }
 
 #pragma mark - View life cycle
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    if(!self.pic)
+    {
+        NSLog(@"pic is null in MZFSC");
+    }
+    self.foodPicImageView.image = self.pic;
+    NSLog(@"Tried to se the image view");
+    [self.view bringSubviewToFront:self.foodPicImageView];
+    
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+  
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                  action:@selector(handleTapGestureRecognizer:)];
     tapGesture.delegate = self;
@@ -799,12 +810,12 @@ static BOOL MZFromSheetControllerIsViewControllerBasedStatusBarAppearance(void) 
     [self.formSheetWindow addGestureRecognizer:tapGesture];
     
     [self.view addSubview:self.presentedFSViewController.view];
-   
+
     // This fix UINavigationBar bug for iOS7 when navigationBar is translucent has a white shadow inside like in iOS6
     if ([self.presentedFSViewController isKindOfClass:[UINavigationController class]]) {
         ((UINavigationController *)self.presentedFSViewController).navigationBar.translucent = NO;
     }
-
+    
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration

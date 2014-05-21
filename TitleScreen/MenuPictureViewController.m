@@ -8,6 +8,8 @@
 
 #import "MenuPictureViewController.h"
 #import "MenuCell.h"
+#import "PopUpViewController.h"
+#import "MZCustomTransition.h"
 #import <MZFormSheetController.h>
 #import <MZFormSheetSegue.h>
 #define CELL_COUNT 12
@@ -136,18 +138,77 @@
     UIImage *image = [UIImage imageNamed:[foodPicArray objectAtIndex:indexPath.row]];
     if(image)
     {
-        NSLog([foodPicArray objectAtIndex:indexPath.row]);
+        NSLog(@"image is not null");
     }
-    [self performSegueWithIdentifier:@"PopUpTest" sender:image];
+   // [self performSegueWithIdentifier:@"PopUpTest" sender:image];
+
+    PopUpViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"popup"];
+    vc.foodPic = image;
+    MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithViewController:vc];
+    
+    formSheet.presentedFormSheetSize = CGSizeMake(300, 298);
+    //    formSheet.transitionStyle = MZFormSheetTransitionStyleSlideFromTop;
+    formSheet.shadowRadius = 2.0;
+    formSheet.shadowOpacity = 0.3;
+    formSheet.shouldDismissOnBackgroundViewTap = YES;
+    formSheet.shouldCenterVertically = YES;
+    formSheet.movementWhenKeyboardAppears = MZFormSheetWhenKeyboardAppearsCenterVertically;
+    // formSheet.keyboardMovementStyle = MZFormSheetKeyboardMovementStyleMoveToTop;
+    // formSheet.keyboardMovementStyle = MZFormSheetKeyboardMovementStyleMoveToTopInset;
+    // formSheet.landscapeTopInset = 50;
+    // formSheet.portraitTopInset = 100;
+    
+    __weak MZFormSheetController *weakFormSheet = formSheet;
+    
+    
+    // If you want to animate status bar use this code
+    formSheet.didTapOnBackgroundViewCompletionHandler = ^(CGPoint location) {
+        PopUpViewController *navController = (PopUpViewController *)weakFormSheet.presentedFSViewController;
+        navController.foodPic = image;
+       // navController = image;
+       
+        /*if ([navController.topViewController isKindOfClass:[MZModalViewController class]]) {
+            MZModalViewController *mzvc = (MZModalViewController *)navController.topViewController;
+            mzvc.showStatusBar = NO;
+        }*/
+
+        [UIView animateWithDuration:0.3 animations:^{
+            if ([weakFormSheet respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
+                [weakFormSheet setNeedsStatusBarAppearanceUpdate];
+            }
+        }];
+    };
+   /*
+    formSheet.willPresentCompletionHandler = ^(UIViewController *presentedFSViewController) {
+        // Passing data
+        UINavigationController *navController = (UINavigationController *)presentedFSViewController;
+        navController.topViewController.title = @"PASSING DATA";
+    };*/
+    formSheet.transitionStyle = MZFormSheetTransitionStyleDropDown;
+    
+    [MZFormSheetController sharedBackgroundWindow].formSheetBackgroundWindowDelegate = self;
+    
+    [self mz_presentFormSheetController:formSheet animated:YES completionHandler:^(MZFormSheetController *formSheetController) {
+        
+    }];
+    
     
 }
+
+
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([segue.identifier isEqualToString:@"PopUpTest"])
     {
+        MZFormSheetController *vc = [segue destinationViewController];
+      
         MZFormSheetSegue *formSheetSegue = (MZFormSheetSegue *)segue;
         MZFormSheetController *formSheet = formSheetSegue.formSheetController;
-        formSheet.transitionStyle = MZFormSheetTransitionStyleBounce;
+        vc.pic = sender;
+        [vc setPic:sender];
+        NSLog(@"tried to put the picture on the form sheet");
+        formSheet.transitionStyle = MZFormSheetTransitionStyleDropDown;
         formSheet.cornerRadius = 8.0;
         formSheet.didTapOnBackgroundViewCompletionHandler = ^(CGPoint location) {
         };
@@ -159,9 +220,12 @@
         [[MZFormSheetBackgroundWindow appearance] setBackgroundBlurEffect:YES];
         [[MZFormSheetBackgroundWindow appearance] setBlurRadius:2.0];
         [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:[UIColor clearColor]];
-    
-        MZFormSheetController *vc = [segue destinationViewController];
-        vc.foodView.image = sender;
+       
+        
+        formSheet.pic = sender;
+        [formSheet setPic:sender];
+        NSLog(@"tried to put the picture on the form sheet");
+        //vc.pic = sender;
      
         
        
