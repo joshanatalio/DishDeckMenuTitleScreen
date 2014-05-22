@@ -25,7 +25,6 @@
 {
     
     if (self = [super initWithFrame:frame]) {
-        NSLog(@"got here");
         [self.contentView addSubview:self.backgroundImage];
         [self.contentView addSubview:self.displayLabel];
         

@@ -657,7 +657,6 @@ static BOOL MZFromSheetControllerIsViewControllerBasedStatusBarAppearance(void) 
     self.view.layer.shadowRadius = self.shadowRadius;
     self.view.layer.shadowOpacity = self.shadowOpacity;
     self.view.frame = self.presentedFSViewController.view.frame;
- 
 }
 
 - (void)setupPresentedFSViewControllerFrame
@@ -786,22 +785,11 @@ static BOOL MZFromSheetControllerIsViewControllerBasedStatusBarAppearance(void) 
 }
 
 #pragma mark - View life cycle
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:YES];
-    if(!self.pic)
-    {
-        NSLog(@"pic is null in MZFSC");
-    }
-    self.foodPicImageView.image = self.pic;
-    NSLog(@"Tried to se the image view");
-    [self.view bringSubviewToFront:self.foodPicImageView];
-    
-}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-  
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                  action:@selector(handleTapGestureRecognizer:)];
     tapGesture.delegate = self;
@@ -815,7 +803,6 @@ static BOOL MZFromSheetControllerIsViewControllerBasedStatusBarAppearance(void) 
     if ([self.presentedFSViewController isKindOfClass:[UINavigationController class]]) {
         ((UINavigationController *)self.presentedFSViewController).navigationBar.translucent = NO;
     }
-    
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration

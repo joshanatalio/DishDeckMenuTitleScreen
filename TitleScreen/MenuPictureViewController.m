@@ -12,7 +12,7 @@
 #import "MZCustomTransition.h"
 #import <MZFormSheetController.h>
 #import <MZFormSheetSegue.h>
-#define CELL_COUNT 12
+#define CELL_COUNT 13
 #define CELL_NAME @"MenuCell"
 
 
@@ -77,13 +77,21 @@
 
 - (void)viewDidLoad
 {
-    foodPicArray = [[NSMutableArray alloc]initWithObjects:@"BJs.png",@"Bluefin.png",@"CPK.png",@"Cottage.png",@"DBar.png",@"Eureka.png",@"ExtraordinaryDesserts.png", @"MignonPho.png",@"SabELee.png",@"Tajima.png",@"Snooze.png",@"TGIF.png", nil];
+    foodPicArray = [[NSMutableArray alloc]initWithObjects:@"burger.jpg",@"BJs.png",@"Bluefin.png",@"CPK.png",@"Cottage.png",@"DBar.png",@"Eureka.png",@"ExtraordinaryDesserts.png", @"MignonPho.png",@"SabELee.png",@"Tajima.png",@"Snooze.png",@"TGIF.png", nil];
     [super viewDidLoad];
     
 	// Do any additional setup after loading the view.
     [self.view addSubview:self.collectionView];
+    UISwipeGestureRecognizer * recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(myRightAction)];
+    [recognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
+    [self.view addGestureRecognizer:recognizer];
+
 }
 
+
+-(void)myRightAction{
+    
+}
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self updateLayoutForOrientation:[UIApplication sharedApplication].statusBarOrientation];
@@ -205,8 +213,7 @@
       
         MZFormSheetSegue *formSheetSegue = (MZFormSheetSegue *)segue;
         MZFormSheetController *formSheet = formSheetSegue.formSheetController;
-        vc.pic = sender;
-        [vc setPic:sender];
+       
         NSLog(@"tried to put the picture on the form sheet");
         formSheet.transitionStyle = MZFormSheetTransitionStyleDropDown;
         formSheet.cornerRadius = 8.0;
@@ -221,9 +228,7 @@
         [[MZFormSheetBackgroundWindow appearance] setBlurRadius:2.0];
         [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:[UIColor clearColor]];
        
-        
-        formSheet.pic = sender;
-        [formSheet setPic:sender];
+     
         NSLog(@"tried to put the picture on the form sheet");
         //vc.pic = sender;
      

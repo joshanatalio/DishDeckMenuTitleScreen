@@ -1,16 +1,22 @@
 PODS:
+  - Bolts (1.1.0)
   - CHTCollectionViewWaterfallLayout (0.7)
+  - Facebook-iOS-SDK (3.14.1):
+    - Bolts
   - MZAppearance (1.1.3)
   - MZFormSheetController (2.3.4):
     - MZAppearance (~> 1.1.3)
 
 DEPENDENCIES:
   - CHTCollectionViewWaterfallLayout
+  - Facebook-iOS-SDK
   - MZFormSheetController
 
 SPEC CHECKSUMS:
-  CHTCollectionViewWaterfallLayout: a637d6271c9e8a2605bec8135d14e73e3a48288f
-  MZAppearance: 490bcde824c00598eb62efe732f2786d9342b907
-  MZFormSheetController: 631fda39fe80df606a5a5c44b804a0c0edc5afd5
+  Bolts: 91c2af8eae1d44e1dd75946a5b0ae04a43ea43e4
+  CHTCollectionViewWaterfallLayout: 184d3b6d5456b48e93ac97e93e606bd8b68aedcc
+  Facebook-iOS-SDK: e9b3d5ac54ee3e5e693f4eef470b97911b3d076d
+  MZAppearance: c88502c0c2345120630c34e09d5ff09e2969ba30
+  MZFormSheetController: 8c453908080c338274e68908849029435d3e2736
 
 COCOAPODS: 0.32.1
