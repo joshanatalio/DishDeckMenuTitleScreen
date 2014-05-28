@@ -261,7 +261,6 @@
         <!--Navigation Controller-->
         <scene sceneID="jve-gc-Ufj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PC1-Dl-Rgv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4hV-qB-mKC" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mm2-UH-5gG">
@@ -273,6 +272,7 @@
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="f5l-3I-HtR"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PC1-Dl-Rgv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-5905" y="-661"/>
         </scene>
@@ -307,6 +307,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="foodDescriptionLabel" destination="Oq6-Yq-wNk" id="8ED-52-osV"/>
+                        <outlet property="foodTitleLabel" destination="Gka-xw-XdQ" id="fw5-Ap-Y6l"/>
                         <outlet property="itemPictureImageView" destination="WNd-dw-ouG" id="hrZ-4L-Pmd"/>
                     </connections>
                 </viewController>

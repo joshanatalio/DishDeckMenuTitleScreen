@@ -22,7 +22,8 @@
     {
         NSLog(@"Food pic is null");
     }
-     self.itemPictureImageView.image = self.foodPic;
+    self.foodTitleLabel.text  = @"test";
+    self.itemPictureImageView.image = self.foodPic;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -48,7 +49,7 @@
     [UIView animateWithDuration:0.3 animations:^{
         [self.navigationController.formSheetController setNeedsStatusBarAppearanceUpdate];
     }];
-   
+    
 }
 
 - (UIStatusBarAnimation)preferredStatusBarUpdateAnimation

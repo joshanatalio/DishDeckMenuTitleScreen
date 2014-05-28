@@ -6,6 +6,12 @@
 // project.
 
 
+// BBBadgeBarButtonItem
+#define COCOAPODS_POD_AVAILABLE_BBBadgeBarButtonItem
+#define COCOAPODS_VERSION_MAJOR_BBBadgeBarButtonItem 1
+#define COCOAPODS_VERSION_MINOR_BBBadgeBarButtonItem 0
+#define COCOAPODS_VERSION_PATCH_BBBadgeBarButtonItem 0
+
 // Bolts
 #define COCOAPODS_POD_AVAILABLE_Bolts
 #define COCOAPODS_VERSION_MAJOR_Bolts 1

@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "BBBadgeBarButtonItem.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -39,6 +40,23 @@
         }
         
     }
+    UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    [customButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [customButton setImage:[UIImage imageNamed:@"BJs.png"] forState:UIControlStateNormal];
+    
+    BBBadgeBarButtonItem *barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
+    
+    barButton.badgeValue = @"2";
+    
+    barButton.badgeOriginX = 13;
+    barButton.badgeOriginY = -9;
+    barButton.badgeBGColor = [UIColor whiteColor];
+    barButton.badgeTextColor = [UIColor redColor];
+
+    
+    self.navigationItem.leftBarButtonItem = barButton;
+    
+    
 }
 
 /* This method is used to remove the keyboard when you tap anywhere on the screen */
@@ -50,6 +68,16 @@
     
 }
 
+-(void)barButtonItemPressed:(UIButton *)sender
+{
+    NSLog(@"Bar button item pressed");
+    BBBadgeBarButtonItem *barButton = (BBBadgeBarButtonItem *)self.navigationItem.leftBarButtonItem;
+    NSString *hi = barButton.badgeValue;
+    NSLog(hi);
+    barButton.badgeValue = hi;
+    barButton.shouldAnimateBadge = YES;
+    barButton.shouldHideBadgeAtZero = NO;
+}
 
 - (void)didReceiveMemoryWarning
 {
