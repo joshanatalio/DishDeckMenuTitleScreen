@@ -7,7 +7,16 @@
 //
 
 #import "ViewController.h"
+#import <CoreLocation/CoreLocation.h>
+#import <CoreBluetooth/CoreBluetooth.h>
 
-@interface MenuViewController : ViewController
+@interface MenuViewController : ViewController <UIApplicationDelegate, CLLocationManagerDelegate>
+
+
+@property (strong, nonatomic) UIWindow *window;
+@property (nonatomic,retain) CLBeaconRegion *beaconRegion;
+@property (nonatomic,retain) CLLocationManager *locationManager;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ibeaconstatusLabel;
 
 @end

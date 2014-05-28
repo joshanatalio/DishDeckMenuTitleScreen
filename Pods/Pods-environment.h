@@ -42,3 +42,9 @@
 #define COCOAPODS_VERSION_MINOR_MZFormSheetController 3
 #define COCOAPODS_VERSION_PATCH_MZFormSheetController 4
 
+// Parse
+#define COCOAPODS_POD_AVAILABLE_Parse
+#define COCOAPODS_VERSION_MAJOR_Parse 1
+#define COCOAPODS_VERSION_MINOR_Parse 2
+#define COCOAPODS_VERSION_PATCH_Parse 19
+

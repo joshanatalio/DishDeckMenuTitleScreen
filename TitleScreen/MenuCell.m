@@ -27,7 +27,6 @@
     if (self = [super initWithFrame:frame]) {
         [self.contentView addSubview:self.backgroundImage];
         [self.contentView addSubview:self.displayLabel];
-       
         
     }
     return self;

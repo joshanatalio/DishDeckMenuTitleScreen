@@ -16,4 +16,6 @@
 
 @property(strong, nonatomic) NSMutableArray *dataArray;
 @property(strong, nonatomic) NSMutableArray *picNames;
+@property NSString* UUID;
+@property BOOL flag;
 @end

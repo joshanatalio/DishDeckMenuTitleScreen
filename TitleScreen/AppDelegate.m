@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
+#import <AdSupport/AdSupport.h>
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @implementation AppDelegate
@@ -18,6 +20,27 @@
     // Override point for customization after application launch.
    
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xFF3A2D)];
+    [Parse setApplicationId:@"79o1Y0q30MHbZh5ITPc9lkXGIzrKNpAj1o5WpVe8"
+                  clientKey:@"zGNeeDLnebZtbKGNmxGTBqtgNwm2rMySH6pxTOil"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    self.UUID = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    self.flag = true;
+    NSLog(@"View did load");
+    NSUUID* ident = [[UIDevice currentDevice].identifierForVendor init];
+    //const char *name = propety_
+    NSLog(@"%@", ident);
+    
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.delegate = self;
+    
+    //Put your UUID here!
+    NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:@"D57092AC-DFAA-446C-8EF3-C81AA22815B5"];
+    _beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid identifier:@"test"];
+    [_locationManager startMonitoringForRegion:_beaconRegion];
+    
+    
+    
     return YES;
 }
 							
@@ -47,5 +70,129 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+/* **********************************************************************
+   **********************************************************************
+   **********************************************************************/
+
+// Called every time a chunk of the data is received
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    NSLog(@"didReceiveData");
+}
+
+// Called when the entire image is finished downloading
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"connectionDidFinishLoading");
+    
+}
+
+- (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region {
+    NSLog(@"didStartMonitoringForRegion");
+    [_locationManager startRangingBeaconsInRegion:_beaconRegion];
+    NSLog(@"started ranging beacons in reigon");
+}
+
+- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
+    NSLog(@"didEnterRegion");
+    [_locationManager startRangingBeaconsInRegion:_beaconRegion];
+    UIAlertView *test = [[UIAlertView alloc] init];
+    test = [test initWithTitle:@"TEST" message:@"MESSAGE" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"other title", nil];
+    [test show];
+    NSLog(@"sent alert");
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    notification.alertBody = @"Inside beacon";
+    
+    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+    
+    //Since we only have one iBeacon we can call our function here, for example send data to our database that we are inside the beacon
+    
+    /*
+     //Set your column online as 1 since we are inside the beacon
+     PFQuery *query = [PFQuery queryWithClassName:@"online"];
+     [query whereKey:@"username" equalTo:[PFUser currentUser].username];
+     [query getFirstObjectInBackgroundWithBlock:^(PFObject * userStats, NSError *error) {
+     if (!error) {
+     // Found UserStats
+     [userStats setObject:@1 forKey:@"online"];
+     
+     // Save
+     [userStats saveInBackground];
+     } else {
+     // Did not find any UserStats for the current user
+     NSLog(@"Error: %@", error);
+     }
+     }];*/
+    
+    NSLog(@"Entered didEnterReigon");
+    
+}
+
+//Usually takes 10-20 seconds before it notices the region change, probably  to avoid spam
+-(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
+    //[_locationManager stopRangingBeaconsInRegion:_beaconRegion];
+    self.ibeaconstatusLabel.text = @"Outside beacon!";
+    
+    /*//Set your column online as 0 since we are outside the beacon
+     PFQuery *query = [PFQuery queryWithClassName:@"online"];
+     [query whereKey:@"username" equalTo:[PFUser currentUser].username];
+     [query getFirstObjectInBackgroundWithBlock:^(PFObject * userStats, NSError *error) {
+     if (!error) {
+     // Found UserStats
+     [userStats setObject:@0 forKey:@"online"];
+     
+     // Save
+     [userStats saveInBackground];
+     } else {
+     // Did not find any UserStats for the current user
+     NSLog(@"Error: %@", error);
+     }
+     }];*/
+    
+    NSLog(@"DidExit");
+}
+
+-(void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region {
+    NSLog(@"REACHED");
+    CLBeacon *beacon = [[CLBeacon alloc] init];
+    beacon = [beacons lastObject];
+    
+    if (beacon.proximity == CLProximityUnknown) {
+        
+        self.ibeaconstatusLabel.text = @"Connected!";
+        self.statusLabel.text = @"Unknown Proximity";
+        
+    } else if (beacon.proximity == CLProximityImmediate) {
+        
+        self.statusLabel.text = @"Immediate";
+        self.ibeaconstatusLabel.text = @"Connected!";
+        
+    } else if (beacon.proximity == CLProximityNear) {
+        
+        self.statusLabel.text = @"Near";
+        self.ibeaconstatusLabel.text = @"Connected!";
+        if(self.flag)
+        {
+            PFObject* object = [PFObject objectWithClassName:@"Q"];
+            object[@"uuid"] = self.UUID;
+            [object saveInBackground];
+            self.flag = false;
+        }
+        
+    } else if (beacon.proximity == CLProximityFar) {
+        
+        self.statusLabel.text = @"Far";
+        self.ibeaconstatusLabel.text = @"Connected!";
+        
+        
+    }
+    //NSLog(@"didRangeBeacons");
+}
+
+-(void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"did fail with error");
+}
+
 
 @end

@@ -7,7 +7,9 @@
 //
 
 #import "ViewController.h"
-#import "BBBadgeBarButtonItem.h"
+#import "MenuPictureViewController.h"
+#import "MenuViewController.h"
+
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -17,6 +19,33 @@
 @implementation ViewController
 @synthesize dataArray;
 @synthesize picNames;
+
+- (IBAction)leadToTab:(id)sender {
+    
+    MenuViewController *menuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"menuVCID"];
+    MenuPictureViewController *myPlateVC = [[MenuPictureViewController alloc] init];
+    MenuPictureViewController *shakerVC = [[MenuPictureViewController alloc] init];
+    
+    UINavigationController *tab1 = [[UINavigationController alloc] initWithRootViewController:menuVC];
+    UINavigationController *tab2 = [[UINavigationController alloc] initWithRootViewController:myPlateVC];
+    UINavigationController *tab3 = [[UINavigationController alloc] initWithRootViewController:shakerVC];
+    
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    
+    NSArray* controllers = [NSArray arrayWithObjects:tab1, tab2, tab3, nil];
+    
+    //self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    tabBarController.viewControllers = controllers;
+    UITabBarItem *tab1Item = [[[tabBarController tabBar] items] objectAtIndex:0];
+    [tab1Item setTitle:@"HOME"];
+    UITabBarItem *tab2Item = [[[tabBarController tabBar] items] objectAtIndex:1];
+    [tab2Item setTitle:@"My Plate"];
+    UITabBarItem *tab3Item = [[[tabBarController tabBar] items] objectAtIndex:2];
+    [tab3Item setTitle:@"Shake It"];
+    
+    [self.navigationController pushViewController:tabBarController animated:NO];
+}
 
 - (void)viewDidLoad
 {
@@ -40,23 +69,6 @@
         }
         
     }
-    UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-    [customButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [customButton setImage:[UIImage imageNamed:@"BJs.png"] forState:UIControlStateNormal];
-    
-    BBBadgeBarButtonItem *barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
-    
-    barButton.badgeValue = @"2";
-    
-    barButton.badgeOriginX = 13;
-    barButton.badgeOriginY = -9;
-    barButton.badgeBGColor = [UIColor whiteColor];
-    barButton.badgeTextColor = [UIColor redColor];
-
-    
-    self.navigationItem.leftBarButtonItem = barButton;
-    
-    
 }
 
 /* This method is used to remove the keyboard when you tap anywhere on the screen */
@@ -66,17 +78,6 @@
     [self.searchBar resignFirstResponder];
     
     
-}
-
--(void)barButtonItemPressed:(UIButton *)sender
-{
-    NSLog(@"Bar button item pressed");
-    BBBadgeBarButtonItem *barButton = (BBBadgeBarButtonItem *)self.navigationItem.leftBarButtonItem;
-    NSString *hi = barButton.badgeValue;
-    NSLog(hi);
-    barButton.badgeValue = hi;
-    barButton.shouldAnimateBadge = YES;
-    barButton.shouldHideBadgeAtZero = NO;
 }
 
 - (void)didReceiveMemoryWarning

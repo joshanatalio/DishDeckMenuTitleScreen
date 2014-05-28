@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4hV-qB-mKC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4hV-qB-mKC">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--View Controller - Dish Deck-->
@@ -87,6 +87,9 @@
                                         <state key="normal" title="Button">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="leadToTab:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="xIP-Dt-KUM"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tYS-0E-780">
                                         <rect key="frame" x="214" y="184" width="106" height="114"/>
@@ -121,6 +124,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Dish Deck" id="bsW-yV-KTd"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="624"/>
                     <connections>
                         <outlet property="scroller" destination="iiD-pp-19J" id="0hG-9c-fTM"/>
                         <outlet property="searchBar" destination="cAN-mY-Dee" id="Ve3-HW-7E5"/>
@@ -170,7 +174,7 @@
             <objects>
                 <viewController id="Hcj-x2-MkJ" customClass="MenuPictureViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tJU-h5-omt">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="624"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -218,7 +222,7 @@
         <!--Menu View Controller-->
         <scene sceneID="F4K-Tu-FlB">
             <objects>
-                <viewController id="tjg-fI-oHC" customClass="MenuViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="menuVCID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tjg-fI-oHC" customClass="MenuViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3sr-EJ-0Cj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="624"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -307,8 +311,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="foodDescriptionLabel" destination="Oq6-Yq-wNk" id="8ED-52-osV"/>
-                        <outlet property="foodTitleLabel" destination="Gka-xw-XdQ" id="fw5-Ap-Y6l"/>
                         <outlet property="itemPictureImageView" destination="WNd-dw-ouG" id="hrZ-4L-Pmd"/>
                     </connections>
                 </viewController>
@@ -457,7 +459,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="lWu-hY-boR"/>
+        <segue reference="FwP-dM-fM7"/>
         <segue reference="1D5-HK-Pdd"/>
     </inferredMetricsTieBreakers>
 </document>

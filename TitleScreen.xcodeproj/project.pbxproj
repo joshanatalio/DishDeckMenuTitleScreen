@@ -54,6 +54,7 @@
 		6FFB57D819173956001110C6 /* Snooze.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFB57CC19173956001110C6 /* Snooze.png */; };
 		6FFB57D919173956001110C6 /* Tajima.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFB57CD19173956001110C6 /* Tajima.png */; };
 		6FFB57DA19173956001110C6 /* TGIF.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FFB57CE19173956001110C6 /* TGIF.png */; };
+		AC6CB55D1935BB10002C56F9 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6CB55C1935BB10002C56F9 /* AdSupport.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,7 @@
 		6FFB57CD19173956001110C6 /* Tajima.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tajima.png; sourceTree = "<group>"; };
 		6FFB57CE19173956001110C6 /* TGIF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TGIF.png; sourceTree = "<group>"; };
 		76B7A891C251457F8692B12E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC6CB55C1935BB10002C56F9 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC6CB55D1935BB10002C56F9 /* AdSupport.framework in Frameworks */,
 				6F1291B4192C703500F326E5 /* SystemConfiguration.framework in Frameworks */,
 				6F1291B2192C702E00F326E5 /* StoreKit.framework in Frameworks */,
 				6F1291B0192C702A00F326E5 /* Security.framework in Frameworks */,
@@ -188,6 +191,7 @@
 		6FD312271911C41D0019F63A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AC6CB55C1935BB10002C56F9 /* AdSupport.framework */,
 				6F1291B3192C703500F326E5 /* SystemConfiguration.framework */,
 				6F1291B1192C702E00F326E5 /* StoreKit.framework */,
 				6F1291AF192C702A00F326E5 /* Security.framework */,

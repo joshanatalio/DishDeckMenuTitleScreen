@@ -12,4 +12,6 @@
 
 @interface MenuPictureViewController : UIViewController <UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout>
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
+@property NSMutableArray *array;
+
 @end
