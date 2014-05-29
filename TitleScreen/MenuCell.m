@@ -20,6 +20,21 @@
     }
     return _backgroundImage;
 }
+-(UILabel *)displayLabel{
+    if(!_displayLabel)
+    {
+        _displayLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.contentView.frame.size.height-20, self.contentView.frame.size.width, 20)];
+        _displayLabel.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6f];
+        _displayLabel.text = @" $11.99"; // just for testing purposes
+        _displayLabel.textColor = [UIColor whiteColor];
+        
+    }
+    
+    return _displayLabel;
+}
+
+
+
 
 - (id)initWithFrame:(CGRect)frame
 {
