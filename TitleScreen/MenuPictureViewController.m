@@ -291,7 +291,11 @@
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return [self.cellSizes[indexPath.item] CGSizeValue];
+    
+    UIImage *photo = [UIImage imageNamed:foodPicArray[indexPath.section]];
+    
+    CGSize size = photo.size;
+    return size;
 }
 
 - (void)didReceiveMemoryWarning
