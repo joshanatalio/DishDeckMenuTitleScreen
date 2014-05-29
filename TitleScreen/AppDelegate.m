@@ -7,8 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "BBBadgeBarButtonItem.h"
 #import <Parse/Parse.h>
 #import <AdSupport/AdSupport.h>
+
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @implementation AppDelegate
@@ -20,6 +22,12 @@
     // Override point for customization after application launch.
    
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xFF3A2D)];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil]];
+     
+     
+     
     [Parse setApplicationId:@"79o1Y0q30MHbZh5ITPc9lkXGIzrKNpAj1o5WpVe8"
                   clientKey:@"zGNeeDLnebZtbKGNmxGTBqtgNwm2rMySH6pxTOil"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
@@ -38,12 +46,11 @@
     NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:@"D57092AC-DFAA-446C-8EF3-C81AA22815B5"];
     _beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid identifier:@"test"];
     [_locationManager startMonitoringForRegion:_beaconRegion];
-    
-    
+   
     
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

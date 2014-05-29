@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4hV-qB-mKC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4hV-qB-mKC">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--View Controller - Dish Deck-->
@@ -124,7 +124,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Dish Deck" id="bsW-yV-KTd"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="624"/>
                     <connections>
                         <outlet property="scroller" destination="iiD-pp-19J" id="0hG-9c-fTM"/>
                         <outlet property="searchBar" destination="cAN-mY-Dee" id="Ve3-HW-7E5"/>
@@ -174,7 +173,7 @@
             <objects>
                 <viewController id="Hcj-x2-MkJ" customClass="MenuPictureViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tJU-h5-omt">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="624"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -279,6 +278,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PC1-Dl-Rgv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-5905" y="-661"/>
+        </scene>
+        <!--Pop Up View Controller-->
+        <scene sceneID="Shq-z8-fI2">
+            <objects>
+                <viewController storyboardIdentifier="queuepop" id="72D-aN-aep" customClass="PopUpViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IA9-FS-hoy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are number 4 on the waiting list. (Go home) ((Or taco Bell))" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4AU-sE-P80">
+                                <rect key="frame" x="0.0" y="13" width="292" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="K3H-2l-yhY">
+                                <rect key="frame" x="58" y="83" width="65" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Go fuck">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WYL-1e-vLU">
+                                <rect key="frame" x="176" y="83" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Yourself">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="1" green="0.13367642939999999" blue="0.19885267270000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uun-Ov-aaN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3836" y="-625"/>
         </scene>
         <!--Pop Up View Controller-->
         <scene sceneID="WF6-pT-DUg">
@@ -459,7 +495,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="FwP-dM-fM7"/>
+        <segue reference="lWu-hY-boR"/>
         <segue reference="1D5-HK-Pdd"/>
     </inferredMetricsTieBreakers>
 </document>

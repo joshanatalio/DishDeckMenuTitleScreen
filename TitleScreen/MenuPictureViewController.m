@@ -56,7 +56,7 @@
         layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
        // layout.footerHeight = 10;
         //layout.headerHeight = 15;
-        layout.minimumColumnSpacing = 5;
+        layout.minimumColumnSpacing = 10;
         layout.minimumInteritemSpacing = 10;
     
         
@@ -86,7 +86,7 @@
         
         for(NSInteger i = 0; i < CELL_COUNT; i++) //loop to add the sizes in
         {
-            CGSize size = CGSizeMake(arc4random() % 50 + 50, arc4random() % 50 + 50);
+            CGSize size = CGSizeMake(arc4random() % 30 + 50, arc4random() % 30 + 50);
             _cellSizes[i] = [NSValue valueWithCGSize:size];
         }
     }
@@ -110,13 +110,12 @@
     UISwipeGestureRecognizer * recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(myRightAction)];
     [recognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
     [self.view addGestureRecognizer:recognizer];
+   
+   // self.view.backgroundColor = [UIColor blackColor];
 
 }
 
 
--(void)myRightAction{
-    
-}
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self updateLayoutForOrientation:[UIApplication sharedApplication].statusBarOrientation];
@@ -176,17 +175,17 @@
         cell.backgroundImage.image = [UIImage imageNamed:@"BJ's"];
     
     }*/
-    UIImage *datImage = [self.array objectAtIndex:indexPath.row];
+    UIImage *cellImage = [self.array objectAtIndex:indexPath.row];
     
-    if(datImage){
+    if(cellImage){
         //NSLog(string);
         //cell.backgroundImage.image =  [UIImage imageNamed:string];
-        cell.backgroundImage.image = datImage;
+        cell.backgroundImage.image = cellImage;
     }
 
     
-    [cell.layer setBorderWidth:2.0f];
-    [cell.layer setBorderColor:[UIColor blackColor].CGColor];
+    [cell.layer setBorderWidth:1.0f];
+    [cell.layer setBorderColor:[UIColor grayColor].CGColor];
     
     return cell;
 }

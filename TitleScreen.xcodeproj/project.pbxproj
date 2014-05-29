@@ -22,6 +22,7 @@
 		6F397CB7192AE20800503883 /* MZNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F397CB6192AE20800503883 /* MZNavigationViewController.m */; };
 		6F397CBA192AE5C500503883 /* MZCustomTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F397CB9192AE5C500503883 /* MZCustomTransition.m */; };
 		6F46F28919130EE90002F4E7 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F46F28819130EE90002F4E7 /* PageContentViewController.m */; };
+		6F84699C1936B88400C2318C /* RedBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F84699B1936B88400C2318C /* RedBar.png */; };
 		6FA5D153192D8C160024E162 /* burger.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FA5D152192D8C160024E162 /* burger.jpg */; };
 		6FA5D155192D92120024E162 /* BJsBlurred.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FA5D154192D92120024E162 /* BJsBlurred.png */; };
 		6FA5D158192D95AF0024E162 /* CustomSegueSwipeLeft.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA5D157192D95AF0024E162 /* CustomSegueSwipeLeft.m */; };
@@ -88,6 +89,7 @@
 		6F397CB9192AE5C500503883 /* MZCustomTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZCustomTransition.m; sourceTree = "<group>"; };
 		6F46F28719130EE90002F4E7 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
 		6F46F28819130EE90002F4E7 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
+		6F84699B1936B88400C2318C /* RedBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedBar.png; sourceTree = "<group>"; };
 		6FA5D152192D8C160024E162 /* burger.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = burger.jpg; sourceTree = "<group>"; };
 		6FA5D154192D92120024E162 /* BJsBlurred.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BJsBlurred.png; sourceTree = "<group>"; };
 		6FA5D156192D95AF0024E162 /* CustomSegueSwipeLeft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSegueSwipeLeft.h; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 		6FD312821911D2D00019F63A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6F84699B1936B88400C2318C /* RedBar.png */,
 				6FA5D154192D92120024E162 /* BJsBlurred.png */,
 				6FA5D152192D8C160024E162 /* burger.jpg */,
 				6FFB57C319173956001110C6 /* BJs.png */,
@@ -386,6 +389,7 @@
 				6FFB57D819173956001110C6 /* Snooze.png in Resources */,
 				6FFB57D919173956001110C6 /* Tajima.png in Resources */,
 				6FFB57DA19173956001110C6 /* TGIF.png in Resources */,
+				6F84699C1936B88400C2318C /* RedBar.png in Resources */,
 				6FFB57D119173956001110C6 /* Cottage.png in Resources */,
 				6FFB57D719173956001110C6 /* SabELee.png in Resources */,
 			);
