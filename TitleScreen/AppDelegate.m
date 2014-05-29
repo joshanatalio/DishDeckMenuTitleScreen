@@ -21,9 +21,11 @@
 {
     // Override point for customization after application launch.
    
+   
+    
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"Dine Bar.png"] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xFF3A2D)];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil]];
      
      

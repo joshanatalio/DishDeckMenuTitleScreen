@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--View Controller - Dish Deck-->
+        <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
@@ -122,7 +122,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Dish Deck" id="bsW-yV-KTd"/>
+                    <navigationItem key="navigationItem" id="bsW-yV-KTd"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="scroller" destination="iiD-pp-19J" id="0hG-9c-fTM"/>
@@ -173,7 +173,7 @@
             <objects>
                 <viewController id="Hcj-x2-MkJ" customClass="MenuPictureViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tJU-h5-omt">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="624"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -495,7 +495,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="lWu-hY-boR"/>
+        <segue reference="FwP-dM-fM7"/>
         <segue reference="1D5-HK-Pdd"/>
     </inferredMetricsTieBreakers>
 </document>
