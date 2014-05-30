@@ -15,6 +15,8 @@
 
 @implementation PopUpViewController
 
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -23,6 +25,8 @@
         NSLog(@"Food pic is null");
     }
      self.itemPictureImageView.image = self.foodPic;
+    self.foodNameLabel.text = self.foodNameString;
+    self.foodDescriptionLabel.text = self.foodDescriptionString;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -33,6 +37,20 @@
     MZFormSheetController *controller = self.navigationController.formSheetController;
     controller.shouldDismissOnBackgroundViewTap = YES;
     
+}
+
+-(UILabel *)foodNameLabel{
+    if(!_foodNameLabel)
+    {
+        
+        _foodNameLabel.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6f];
+        [_foodNameLabel setFont:[UIFont fontWithName:@"Euphemia UCAS" size:12]];
+        _foodNameLabel.text = @"Cheeseburger"; // just for testing purposes
+        
+        _foodNameLabel.textColor = [UIColor blackColor];
+    }
+    
+    return _foodNameLabel;
 }
 
 - (NSUInteger)supportedInterfaceOrientations

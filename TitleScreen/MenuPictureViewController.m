@@ -219,14 +219,18 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     //UIImage *image = [UIImage imageNamed:[foodPicArray objectAtIndex:indexPath.row]];
     UIImage *image = [self.foodPictureArray objectAtIndex:indexPath.row];
-    
+    NSString *foodName = [self.foodNameArray objectAtIndex:indexPath.row];
+    NSString *foodDescription = [self.foodDescritonArray objectAtIndex:indexPath.row];
     if(image)
     {
         NSLog(@"image is not null");
     }
     
     PopUpViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"popup"];
-    vc.foodPic = image;
+    
+    vc.foodPic = image; // set the pop up image
+    vc.foodNameString = foodName;
+    vc.foodDescriptionString = foodDescription;
     MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithViewController:vc];
     
     formSheet.presentedFormSheetSize = CGSizeMake(300, 298);

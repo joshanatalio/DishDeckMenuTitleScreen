@@ -13,5 +13,8 @@
 @property (nonatomic, strong) UIImageView *itemPictureView;
 @property (strong, nonatomic) IBOutlet UIImageView *itemPictureImageView;
 @property (strong, nonatomic) UIImage *foodPic;
-@property (nonatomic, readwrite) UILabel *itemNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *foodNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *foodDescriptionLabel;
+@property (strong, nonatomic) NSString *foodNameString;
+@property (strong, nonatomic) NSString *foodDescriptionString;
 @end
