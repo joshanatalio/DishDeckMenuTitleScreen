@@ -27,7 +27,7 @@
         _foodNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.contentView.frame.size.width, 20)];
         _foodNameLabel.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6f];
         [_foodNameLabel setFont:[UIFont fontWithName:@"Euphemia UCAS" size:12]];
-        _foodNameLabel.text = @"Cheeseburger"; // just for testing purposes
+        //_foodNameLabel.text = @"Cheeseburger"; // just for testing purposes
         
         _foodNameLabel.textColor = [UIColor whiteColor];
     }
@@ -41,7 +41,7 @@
         _priceLabel.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3f];
         [_priceLabel setFont:[UIFont fontWithName:@"Euphemia UCAS" size:12]];
         _priceLabel.textAlignment = NSTextAlignmentRight;
-        _priceLabel.text = @"$11.99    "; // just for testing purposes
+       // _priceLabel.text = @"$11.99    "; // just for testing purposes
         
         _priceLabel.textColor = [UIColor whiteColor];
         

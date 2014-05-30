@@ -24,28 +24,42 @@
 
 @implementation MenuPictureViewController{
     NSMutableArray *foodPicArray;
+    
 }
 
 
 - (NSMutableArray *)queryForPics:(NSString *) category {
     //NSMutableArray *picArray = [[NSMutableArray alloc] init];
-    self.array = [[NSMutableArray alloc] init];
+    self.foodPictureArray = [[NSMutableArray alloc] init];
+    self.foodNameArray = [[NSMutableArray alloc] init];
+    self.foodPriceArray = [[NSMutableArray alloc] init];
+    self.foodDescritonArray = [[NSMutableArray alloc] init];
+    
     NSLog(@"inside query for pics");
     PFQuery *query = [PFQuery queryWithClassName:@"BJMenu"];
     query.limit = 100;
-    [query whereKey:@"category" equalTo:category];
+    [query whereKey:@"course" equalTo:category];
     NSArray *objects = [query findObjects];
+    
     for (PFObject *obj in objects) {
         PFFile *imageFile = [obj objectForKey:@"pics"];
         NSData *data = [imageFile getData];
         UIImage *image = [UIImage imageWithData:data];
-        [self.array addObject:image];
+        NSString *name = [obj objectForKey:@"menuItemName"];
+        NSString *price = [obj objectForKey:@"menuItemPrice"];
+        NSString *description = [obj objectForKey:@"menuItemDescription"];
+        [self.foodNameArray addObject:name];
+        [self.foodPriceArray addObject:price];
+        [self.foodDescritonArray addObject:description];
+        [self.foodPictureArray addObject:image];
         NSLog(@"Added object");
-        NSLog(@"array has this many elements: %d", [self.array count]);
+        NSLog(@"array has this many elements: %d", [self.foodPictureArray count]);
     }
 
-    NSLog(@"End of method. Num Elements: %d", [self.array count]);
-    return self.array;
+    
+    
+    NSLog(@"End of method. Num Elements: %d", [self.foodPictureArray count]);
+    return self.foodPictureArray;
 }
 
 
@@ -54,11 +68,11 @@
         CHTCollectionViewWaterfallLayout *layout = [[CHTCollectionViewWaterfallLayout alloc]init]; // make the view into a waterfal; layout
         /* do tall the specifications for header footer and spacing here */
         layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-       // layout.footerHeight = 10;
+        // layout.footerHeight = 10;
         //layout.headerHeight = 15;
         layout.minimumColumnSpacing = 10;
         layout.minimumInteritemSpacing = 10;
-    
+        
         
         
         _collectionView = [[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:layout]; // init the collection view with the bounds that were given above
@@ -72,7 +86,7 @@
         [_collectionView registerClass:[MenuCell class] forCellWithReuseIdentifier:CELL_NAME];
         
     }
-
+    
     
     return _collectionView;
 }
@@ -102,23 +116,23 @@
 - (void)viewDidLoad
 {
     
-   // foodPicArray = [[NSMutableArray alloc]initWithObjects:@"burger.jpg",@"BJs.png",@"Bluefin.png",@"CPK.png",@"Cottage.png",@"DBar.png",@"Eureka.png",@"ExtraordinaryDesserts.png", @"MignonPho.png",@"SabELee.png",@"Tajima.png",@"Snooze.png",@"TGIF.png", nil];
+    // foodPicArray = [[NSMutableArray alloc]initWithObjects:@"burger.jpg",@"BJs.png",@"Bluefin.png",@"CPK.png",@"Cottage.png",@"DBar.png",@"Eureka.png",@"ExtraordinaryDesserts.png", @"MignonPho.png",@"SabELee.png",@"Tajima.png",@"Snooze.png",@"TGIF.png", nil];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc]initWithTitle:@"Home" style:UIBarButtonItemStyleBordered target:nil action:nil];
     backButton.title = @"HOME";
     self.navigationItem.backBarButtonItem = backButton;
     [super viewDidLoad];
-   
-
+    
+    
     [self queryForPics:@"Entree"];
-
+    
 	// Do any additional setup after loading the view.
     [self.view addSubview:self.collectionView];
     UISwipeGestureRecognizer * recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(myRightAction)];
     [recognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
     [self.view addGestureRecognizer:recognizer];
-   
-   // self.view.backgroundColor = [UIColor blackColor];
-
+    
+    // self.view.backgroundColor = [UIColor blackColor];
+    
 }
 
 
@@ -142,7 +156,7 @@
 
 #pragma mark - UICollectionViewDataSource
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return CELL_COUNT;
+    return [self.foodPictureArray count];
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
@@ -152,46 +166,48 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     /*
-    NSLog(@"inside cellforItemAtIndex");
-    MenuCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ListCell" forIndexPath:indexPath];
-    
-    //UIImageView *pic = (UIImageView *)[cell viewWithTag:69];
-    UIImage *string = [array objectAtIndex:indexPath.row];
-    
-    if(string){
-        //NSLog(string);
-        //cell.backgroundImage.image =  [UIImage imageNamed:string];
-        cell.backgroundImage.image = string;
-    }
-    
-    [cell.layer setBorderWidth:2.0f];
-    [cell.layer setBorderColor:[UIColor whiteColor].CGColor];
-    
-    return cell;
-*/
+     NSLog(@"inside cellforItemAtIndex");
+     MenuCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ListCell" forIndexPath:indexPath];
+     
+     //UIImageView *pic = (UIImageView *)[cell viewWithTag:69];
+     UIImage *string = [array objectAtIndex:indexPath.row];
+     
+     if(string){
+     //NSLog(string);
+     //cell.backgroundImage.image =  [UIImage imageNamed:string];
+     cell.backgroundImage.image = string;
+     }
+     
+     [cell.layer setBorderWidth:2.0f];
+     [cell.layer setBorderColor:[UIColor whiteColor].CGColor];
+     
+     return cell;
+     */
     
     
     MenuCell *cell = (MenuCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_NAME forIndexPath:indexPath];;;
     //NSString *string = [self.array objectAtIndex:indexPath.row];
     
     /*if(string){
-       // NSLog(string);
-        cell.foodPictureName = string;
-        cell.backgroundImage.image =  [UIImage imageNamed:string];
-    }
-    else
-    {
-        cell.backgroundImage.image = [UIImage imageNamed:@"BJ's"];
-    
-    }*/
-    UIImage *cellImage = [self.array objectAtIndex:indexPath.row];
-    
+     // NSLog(string);
+     cell.foodPictureName = string;
+     cell.backgroundImage.image =  [UIImage imageNamed:string];
+     }
+     else
+     {
+     cell.backgroundImage.image = [UIImage imageNamed:@"BJ's"];
+     
+     }*/
+    UIImage *cellImage = [self.foodPictureArray objectAtIndex:indexPath.row];
+    // This is where we are setting the cells for collection view.
     if(cellImage){
         //NSLog(string);
         //cell.backgroundImage.image =  [UIImage imageNamed:string];
+        cell.foodNameLabel.text = [self.foodNameArray objectAtIndex:indexPath.row];
         cell.backgroundImage.image = cellImage;
+        cell.priceLabel.text = [self.foodPriceArray objectAtIndex:indexPath.row];
     }
-
+    
     
     [cell.layer setBorderWidth:1.0f];
     [cell.layer setBorderColor:[UIColor grayColor].CGColor];
@@ -202,13 +218,13 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     //UIImage *image = [UIImage imageNamed:[foodPicArray objectAtIndex:indexPath.row]];
-    UIImage *image = [self.array objectAtIndex:indexPath.row];
-   
+    UIImage *image = [self.foodPictureArray objectAtIndex:indexPath.row];
+    
     if(image)
     {
         NSLog(@"image is not null");
     }
-
+    
     PopUpViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"popup"];
     vc.foodPic = image;
     MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithViewController:vc];
@@ -226,30 +242,30 @@
     // formSheet.portraitTopInset = 100;
     
     __weak MZFormSheetController *weakFormSheet = formSheet;
-   
+    
     // If you want to animate status bar use this code
-   // formSheet.didTapOnBackgroundViewCompletionHandler = ^(CGPoint location) {
-       // PopUpViewController *navController = (PopUpViewController *)weakFormSheet.presentedFSViewController;
-       // navController.foodPic = image;
-       // navController = image;
-       
-        /*if ([navController.topViewController isKindOfClass:[MZModalViewController class]]) {
-            MZModalViewController *mzvc = (MZModalViewController *)navController.topViewController;
-            mzvc.showStatusBar = NO;
-        }*/
-
-     /*   [UIView animateWithDuration:0.3 animations:^{
-            if ([weakFormSheet respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
-                [weakFormSheet setNeedsStatusBarAppearanceUpdate];
-            }
-        }];
-    };
-   
-    formSheet.willPresentCompletionHandler = ^(UIViewController *presentedFSViewController) {
-        // Passing data
-        UINavigationController *navController = (UINavigationController *)presentedFSViewController;
-        navController.topViewController.title = @"PASSING DATA";
-    };*/
+    // formSheet.didTapOnBackgroundViewCompletionHandler = ^(CGPoint location) {
+    // PopUpViewController *navController = (PopUpViewController *)weakFormSheet.presentedFSViewController;
+    // navController.foodPic = image;
+    // navController = image;
+    
+    /*if ([navController.topViewController isKindOfClass:[MZModalViewController class]]) {
+     MZModalViewController *mzvc = (MZModalViewController *)navController.topViewController;
+     mzvc.showStatusBar = NO;
+     }*/
+    
+    /*   [UIView animateWithDuration:0.3 animations:^{
+     if ([weakFormSheet respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
+     [weakFormSheet setNeedsStatusBarAppearanceUpdate];
+     }
+     }];
+     };
+     
+     formSheet.willPresentCompletionHandler = ^(UIViewController *presentedFSViewController) {
+     // Passing data
+     UINavigationController *navController = (UINavigationController *)presentedFSViewController;
+     navController.topViewController.title = @"PASSING DATA";
+     };*/
     
     formSheet.transitionStyle = MZFormSheetTransitionStyleDropDown;
     
@@ -269,10 +285,10 @@
     if([segue.identifier isEqualToString:@"PopUpTest"])
     {
         MZFormSheetController *vc = [segue destinationViewController];
-      
+        
         MZFormSheetSegue *formSheetSegue = (MZFormSheetSegue *)segue;
         MZFormSheetController *formSheet = formSheetSegue.formSheetController;
-       
+        
         NSLog(@"tried to put the picture on the form sheet");
         formSheet.transitionStyle = MZFormSheetTransitionStyleDropDown;
         formSheet.cornerRadius = 8.0;
@@ -281,37 +297,41 @@
         
         formSheet.shouldDismissOnBackgroundViewTap = YES;
         formSheet.didPresentCompletionHandler = ^(UIViewController *presentedFSViewController) {
-        
+            
         };
         [[MZFormSheetBackgroundWindow appearance] setBackgroundBlurEffect:YES];
         [[MZFormSheetBackgroundWindow appearance] setBlurRadius:2.0];
         [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:[UIColor clearColor]];
-       
-     
+        
+        
         NSLog(@"tried to put the picture on the form sheet");
         //vc.pic = sender;
-     
         
-       
+        
+        
     }
-        
-        
+    
+    
     
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    CGSize size;
-   
-    UIImage *photo = self.array[indexPath.section];
+    CGSize nsize;
+    UIImage *photo = self.foodPictureArray[indexPath.section];
     
     if(!photo)
     {
-        size = CGSizeZero;
+        nsize = CGSizeZero;
     }
     else{
-    size = photo.size;
+        //CGSize newsize = CGRectMake(0, 0, photo.size.width*2, photo.size.height*2);
+        nsize = CGSizeMake(photo.size.width*4, photo.size.height*4);
+        NSLog(@"Photo size was set in sizeforItemAtIndexPath");
+        
+        
+        
     }
-    return size;
+    return nsize;
 }
 
 - (void)didReceiveMemoryWarning
