@@ -25,7 +25,9 @@
     {
         _displayLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.contentView.frame.size.height-20, self.contentView.frame.size.width, 20)];
         _displayLabel.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6f];
+        [_displayLabel setFont:[UIFont fontWithName:@"Euphemia UCAS" size:12]];
         _displayLabel.text = @" $11.99"; // just for testing purposes
+        
         _displayLabel.textColor = [UIColor whiteColor];
         
     }
@@ -48,12 +50,12 @@
 }
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect
+ {
+ // Drawing code
+ }
+ */
 
 @end
