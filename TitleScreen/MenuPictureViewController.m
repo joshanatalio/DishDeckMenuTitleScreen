@@ -32,7 +32,7 @@
     self.array = [[NSMutableArray alloc] init];
     NSLog(@"inside query for pics");
     PFQuery *query = [PFQuery queryWithClassName:@"BJMenu"];
-    query.limit = 30;
+    query.limit = 100;
     [query whereKey:@"category" equalTo:category];
     NSArray *objects = [query findObjects];
     for (PFObject *obj in objects) {
@@ -102,7 +102,7 @@
 - (void)viewDidLoad
 {
     
-    foodPicArray = [[NSMutableArray alloc]initWithObjects:@"burger.jpg",@"BJs.png",@"Bluefin.png",@"CPK.png",@"Cottage.png",@"DBar.png",@"Eureka.png",@"ExtraordinaryDesserts.png", @"MignonPho.png",@"SabELee.png",@"Tajima.png",@"Snooze.png",@"TGIF.png", nil];
+   // foodPicArray = [[NSMutableArray alloc]initWithObjects:@"burger.jpg",@"BJs.png",@"Bluefin.png",@"CPK.png",@"Cottage.png",@"DBar.png",@"Eureka.png",@"ExtraordinaryDesserts.png", @"MignonPho.png",@"SabELee.png",@"Tajima.png",@"Snooze.png",@"TGIF.png", nil];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc]initWithTitle:@"Home" style:UIBarButtonItemStyleBordered target:nil action:nil];
     backButton.title = @"HOME";
     self.navigationItem.backBarButtonItem = backButton;
@@ -203,18 +203,18 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     //UIImage *image = [UIImage imageNamed:[foodPicArray objectAtIndex:indexPath.row]];
     UIImage *image = [self.array objectAtIndex:indexPath.row];
+   
     if(image)
     {
         NSLog(@"image is not null");
     }
-   // [self performSegueWithIdentifier:@"PopUpTest" sender:image];
 
     PopUpViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"popup"];
     vc.foodPic = image;
     MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithViewController:vc];
     
     formSheet.presentedFormSheetSize = CGSizeMake(300, 298);
-    //    formSheet.transitionStyle = MZFormSheetTransitionStyleSlideFromTop;
+    //formSheet.transitionStyle = MZFormSheetTransitionStyleSlideFromTop;
     formSheet.shadowRadius = 2.0;
     formSheet.shadowOpacity = 0.3;
     formSheet.shouldDismissOnBackgroundViewTap = YES;
@@ -226,12 +226,11 @@
     // formSheet.portraitTopInset = 100;
     
     __weak MZFormSheetController *weakFormSheet = formSheet;
-    
-    
+   
     // If you want to animate status bar use this code
-    formSheet.didTapOnBackgroundViewCompletionHandler = ^(CGPoint location) {
-        PopUpViewController *navController = (PopUpViewController *)weakFormSheet.presentedFSViewController;
-        navController.foodPic = image;
+   // formSheet.didTapOnBackgroundViewCompletionHandler = ^(CGPoint location) {
+       // PopUpViewController *navController = (PopUpViewController *)weakFormSheet.presentedFSViewController;
+       // navController.foodPic = image;
        // navController = image;
        
         /*if ([navController.topViewController isKindOfClass:[MZModalViewController class]]) {
@@ -239,18 +238,19 @@
             mzvc.showStatusBar = NO;
         }*/
 
-        [UIView animateWithDuration:0.3 animations:^{
+     /*   [UIView animateWithDuration:0.3 animations:^{
             if ([weakFormSheet respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
                 [weakFormSheet setNeedsStatusBarAppearanceUpdate];
             }
         }];
     };
-   /*
+   
     formSheet.willPresentCompletionHandler = ^(UIViewController *presentedFSViewController) {
         // Passing data
         UINavigationController *navController = (UINavigationController *)presentedFSViewController;
         navController.topViewController.title = @"PASSING DATA";
     };*/
+    
     formSheet.transitionStyle = MZFormSheetTransitionStyleDropDown;
     
     [MZFormSheetController sharedBackgroundWindow].formSheetBackgroundWindowDelegate = self;
@@ -302,7 +302,7 @@
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     CGSize size;
    
-    UIImage *photo = [UIImage imageNamed:foodPicArray[indexPath.section]];
+    UIImage *photo = self.array[indexPath.section];
     
     if(!photo)
     {

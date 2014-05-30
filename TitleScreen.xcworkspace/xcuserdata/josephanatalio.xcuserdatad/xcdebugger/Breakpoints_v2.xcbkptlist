@@ -10,43 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TitleScreen/MenuPictureViewController.m"
-            timestampString = "423102015.808504"
+            timestampString = "423173869.180577"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "-updateLayoutForOrientation:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TitleScreen/MenuPictureViewController.m"
-            timestampString = "423102015.808504"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
-            landmarkName = "-collectionView:cellForItemAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TitleScreen/MenuPictureViewController.m"
-            timestampString = "423102015.808504"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "-collectionView:didSelectItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -57,42 +25,72 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TitleScreen/PopUpViewController.h"
-            timestampString = "422243601.275528"
+            filePath = "TitleScreen/MenuPictureViewController.m"
+            timestampString = "423173935.53729"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
-            landmarkName = "itemPictureImageView"
-            landmarkType = "19">
+            startingLineNumber = "228"
+            endingLineNumber = "228"
+            landmarkName = "-collectionView:didSelectItemAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TitleScreen/MenuPictureViewController.m"
+            timestampString = "423174041.753806"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
+            landmarkName = "-collectionView:didSelectItemAtIndexPath:"
+            landmarkType = "5">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[PopUpViewController itemPictureImageView]"
+                  symbolName = "__69-[MenuPictureViewController collectionView:didSelectItemAtIndexPath:]_block_invoke"
                   moduleName = "TitleScreen"
-                  urlString = "file:///Users/josephanatalio/Desktop/Xcode%20Development/TitleScreen/TitleScreen/PopUpViewController.h"
-                  timestampString = "422243601.39874"
+                  urlString = "file:///Users/josephanatalio/Desktop/Xcode%20Development/TitleScreen/TitleScreen/MenuPictureViewController.m"
+                  timestampString = "423173942.612355"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
-                  offsetFromSymbolStart = "24">
+                  startingLineNumber = "242"
+                  endingLineNumber = "242"
+                  offsetFromSymbolStart = "151">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[PopUpViewController setItemPictureImageView:]"
+                  symbolName = "__69-[MenuPictureViewController collectionView:didSelectItemAtIndexPath:]_block_invoke"
                   moduleName = "TitleScreen"
-                  urlString = "file:///Users/josephanatalio/Desktop/Xcode%20Development/TitleScreen/TitleScreen/PopUpViewController.h"
-                  timestampString = "422243601.401008"
+                  urlString = "file:///Users/josephanatalio/Desktop/Xcode%20Development/TitleScreen/TitleScreen/MenuPictureViewController.m"
+                  timestampString = "423173942.612671"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
-                  offsetFromSymbolStart = "31">
+                  startingLineNumber = "242"
+                  endingLineNumber = "242"
+                  offsetFromSymbolStart = "353">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__69-[MenuPictureViewController collectionView:didSelectItemAtIndexPath:]_block_invoke_2"
+                  moduleName = "TitleScreen"
+                  urlString = "file:///Users/josephanatalio/Desktop/Xcode%20Development/TitleScreen/TitleScreen/MenuPictureViewController.m"
+                  timestampString = "423173942.612872"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "243"
+                  endingLineNumber = "243"
+                  offsetFromSymbolStart = "23">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -104,11 +102,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TitleScreen/MenuPictureViewController.m"
-            timestampString = "423102015.808504"
+            timestampString = "423173982.514413"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "-collectionView:didSelectItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -120,13 +118,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TitleScreen/MenuPictureViewController.m"
-            timestampString = "423102015.808504"
+            timestampString = "423175049.076813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
+            startingLineNumber = "257"
+            endingLineNumber = "257"
             landmarkName = "-collectionView:didSelectItemAtIndexPath:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MenuPictureViewController collectionView:didSelectItemAtIndexPath:]"
+                  moduleName = "TitleScreen"
+                  urlString = "file:///Users/josephanatalio/Desktop/Xcode%20Development/TitleScreen/TitleScreen/MenuPictureViewController.m"
+                  timestampString = "423174432.874662"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "257"
+                  endingLineNumber = "257"
+                  offsetFromSymbolStart = "697">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__69-[MenuPictureViewController collectionView:didSelectItemAtIndexPath:]_block_invoke"
+                  moduleName = "TitleScreen"
+                  urlString = "file:///Users/josephanatalio/Desktop/Xcode%20Development/TitleScreen/TitleScreen/MenuPictureViewController.m"
+                  timestampString = "423174432.874975"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "257"
+                  endingLineNumber = "257"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -136,29 +164,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TitleScreen/MenuPictureViewController.m"
-            timestampString = "423102015.808504"
+            timestampString = "423175049.076813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "-collectionView:cellForItemAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TitleScreen/MenuPictureViewController.m"
-            timestampString = "423102015.808504"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
             landmarkName = "-collectionView:didSelectItemAtIndexPath:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MenuPictureViewController collectionView:didSelectItemAtIndexPath:]"
+                  moduleName = "TitleScreen"
+                  urlString = "file:///Users/josephanatalio/Desktop/Xcode%20Development/TitleScreen/TitleScreen/MenuPictureViewController.m"
+                  timestampString = "423174439.867928"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "253"
+                  endingLineNumber = "253"
+                  offsetFromSymbolStart = "658">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MenuPictureViewController collectionView:didSelectItemAtIndexPath:]"
+                  moduleName = "TitleScreen"
+                  urlString = "file:///Users/josephanatalio/Desktop/Xcode%20Development/TitleScreen/TitleScreen/MenuPictureViewController.m"
+                  timestampString = "423174439.8683"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "253"
+                  endingLineNumber = "253"
+                  offsetFromSymbolStart = "905">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -168,27 +210,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TitleScreen/MenuPictureViewController.m"
-            timestampString = "423102015.808504"
+            timestampString = "423175049.076813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
-            landmarkName = "-collectionView:didSelectItemAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TitleScreen/MenuPictureViewController.m"
-            timestampString = "423102015.808504"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
             landmarkName = "-collectionView:didSelectItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>

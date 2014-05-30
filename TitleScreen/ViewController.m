@@ -23,7 +23,7 @@
 @implementation ViewController
 @synthesize dataArray;
 @synthesize picNames;
-int count = 1;
+static int queueCount = 1;
 
 - (IBAction)leadToTab:(id)sender {
     
@@ -52,6 +52,8 @@ int count = 1;
     [self.navigationController pushViewController:tabBarController animated:YES];
 }
 
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -78,11 +80,11 @@ int count = 1;
     
     UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
     [customButton addTarget:self action:@selector(barButtonItemPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [customButton setImage:[UIImage imageNamed:@"BJs.png"] forState:UIControlStateNormal];
+    [customButton setImage:[UIImage imageNamed:@"QueueButton.png"] forState:UIControlStateNormal];
     
     BBBadgeBarButtonItem *barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
       barButton.shouldHideBadgeAtZero = NO;
-    NSString *hi = [NSString stringWithFormat:@"%d", count];
+    NSString *hi = [NSString stringWithFormat:@"%d", queueCount];
     barButton.badgeValue = hi;
 
     
@@ -157,11 +159,11 @@ int count = 1;
     
     NSLog(@"Bar button item pressed");
     BBBadgeBarButtonItem *barButton = (BBBadgeBarButtonItem *)self.navigationItem.rightBarButtonItem;
-    count++;
-    NSString *hi = [NSString stringWithFormat:@"%d", count];
+    queueCount++;
+    NSString *hi = [NSString stringWithFormat:@"%d", queueCount];
     barButton.badgeValue = hi;
    
-    barButton.shouldAnimateBadge = YES;
+    barButton.shouldAnimateBadge = NO;
     barButton.shouldHideBadgeAtZero = NO;
 }
 
