@@ -101,8 +101,14 @@
 
 - (void)viewDidLoad
 {
+    
     foodPicArray = [[NSMutableArray alloc]initWithObjects:@"burger.jpg",@"BJs.png",@"Bluefin.png",@"CPK.png",@"Cottage.png",@"DBar.png",@"Eureka.png",@"ExtraordinaryDesserts.png", @"MignonPho.png",@"SabELee.png",@"Tajima.png",@"Snooze.png",@"TGIF.png", nil];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc]initWithTitle:@"Home" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    backButton.title = @"HOME";
+    self.navigationItem.backBarButtonItem = backButton;
     [super viewDidLoad];
+   
+
     [self queryForPics:@"Entree"];
 
 	// Do any additional setup after loading the view.
@@ -118,6 +124,9 @@
 
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc]initWithTitle:@"Home" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backButton;
+    
     [self updateLayoutForOrientation:[UIApplication sharedApplication].statusBarOrientation];
 }
 

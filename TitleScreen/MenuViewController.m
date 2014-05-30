@@ -18,6 +18,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationController.navigationController.navigationBar.backItem.title = @" ";
 	// Do any additional setup after loading the view.
 }
 

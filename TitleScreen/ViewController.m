@@ -49,7 +49,7 @@ int count = 1;
     UITabBarItem *tab3Item = [[[tabBarController tabBar] items] objectAtIndex:2];
     [tab3Item setTitle:@"Shake It"];
     
-    [self.navigationController pushViewController:tabBarController animated:NO];
+    [self.navigationController pushViewController:tabBarController animated:YES];
 }
 
 - (void)viewDidLoad
