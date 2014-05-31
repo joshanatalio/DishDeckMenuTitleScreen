@@ -26,6 +26,7 @@
     }
      self.itemPictureImageView.image = self.foodPic;
     self.foodNameLabel.text = self.foodNameString;
+    
     self.foodDescriptionLabel.text = self.foodDescriptionString;
 }
 

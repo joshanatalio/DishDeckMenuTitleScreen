@@ -205,7 +205,8 @@
         //cell.backgroundImage.image =  [UIImage imageNamed:string];
         cell.foodNameLabel.text = [self.foodNameArray objectAtIndex:indexPath.row];
         cell.backgroundImage.image = cellImage;
-        cell.priceLabel.text = [self.foodPriceArray objectAtIndex:indexPath.row];
+        NSString *tempString = [NSString stringWithFormat:@"$%@",[self.foodPriceArray objectAtIndex:indexPath.row]];
+        cell.priceLabel.text = tempString;
     }
     
     
