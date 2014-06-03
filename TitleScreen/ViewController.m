@@ -14,6 +14,12 @@
 #import "MZCustomTransition.h"
 #import <MZFormSheetController.h>
 #import <MZFormSheetSegue.h>
+#import <Parse/Parse.h>
+#import <AdSupport/AdSupport.h>
+#import "ShakeViewController.h"
+#import "CategoryTableViewController.h"
+#import "MyPlateViewController.h"
+
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -23,40 +29,54 @@
 @implementation ViewController
 @synthesize dataArray;
 @synthesize picNames;
-static int queueCount = 1;
+//static int queueCount = 1;
 
 - (IBAction)leadToTab:(id)sender {
     
-    MenuViewController *menuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"menuVCID"];
-    MenuPictureViewController *myPlateVC = [[MenuPictureViewController alloc] init];
-    MenuPictureViewController *shakerVC = [[MenuPictureViewController alloc] init];
     
-    UINavigationController *tab1 = [[UINavigationController alloc] initWithRootViewController:menuVC];
-    UINavigationController *tab2 = [[UINavigationController alloc] initWithRootViewController:myPlateVC];
+    CategoryTableViewController *textMenuVC = [[CategoryTableViewController alloc] init];
+    //MenuPictureViewController *imageMenuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MenuPictureVCID"];
+    //MenuViewController *menuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"menuVCID"];
+    ShakeViewController *shakerVC = [self.storyboard instantiateViewControllerWithIdentifier:@"shakeVCID"];
+    MyPlateViewController *myPlateVC = [[MyPlateViewController alloc] init];
+    
+    UINavigationController *tab1 = [[UINavigationController alloc] initWithRootViewController:textMenuVC];
+    //UINavigationController *tab2 = [[UINavigationController alloc] initWithRootViewController:imageMenuVC];
     UINavigationController *tab3 = [[UINavigationController alloc] initWithRootViewController:shakerVC];
+    UINavigationController *tab4 = [[UINavigationController alloc] initWithRootViewController:myPlateVC];
+
     
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
     
-    NSArray* controllers = [NSArray arrayWithObjects:tab1, tab2, tab3, nil];
+    NSArray* controllers = [NSArray arrayWithObjects:tab1, /*tab2, */tab3, tab4, nil];
     
     //self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     tabBarController.viewControllers = controllers;
     UITabBarItem *tab1Item = [[[tabBarController tabBar] items] objectAtIndex:0];
-    [tab1Item setTitle:@"Home"];
-    UITabBarItem *tab2Item = [[[tabBarController tabBar] items] objectAtIndex:1];
-    [tab2Item setTitle:@"My Plate"];
-    UITabBarItem *tab3Item = [[[tabBarController tabBar] items] objectAtIndex:2];
+    [tab1Item setTitle:@"Menu"];
+    /*UITabBarItem *tab2Item = [[[tabBarController tabBar] items] objectAtIndex:0];
+    [tab2Item setTitle:@"Picture Menu"];
+    */UITabBarItem *tab3Item = [[[tabBarController tabBar] items] objectAtIndex:1];
     [tab3Item setTitle:@"Shake It"];
-    
-    [self.navigationController pushViewController:tabBarController animated:YES];
+    UITabBarItem *tab4Item = [[[tabBarController tabBar] items] objectAtIndex:2];
+    [tab4Item setTitle:@"My Plate"];
+   // [self.navigationController pushViewController:tabBarController animated:YES]
+    //[self.navigationController pushViewController:tabBarController animated:YES];
+    [self presentViewController:tabBarController animated:YES completion:nil];
 }
-
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    /*if(self.navigationController.navigationItem.leftBarButtonItem)
+        NSLog(@"IS EXISTS \n\n\n\n\n\n\n\n\n\n");
+    */
+
+
+    self.UUID = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    
     //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"RedBar.png"]];
     [scroller setScrollEnabled:YES];
     [scroller setContentSize:CGSizeMake(320, 624)];
@@ -83,20 +103,38 @@ static int queueCount = 1;
     [customButton setImage:[UIImage imageNamed:@"QueueButton.png"] forState:UIControlStateNormal];
     
     BBBadgeBarButtonItem *barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
-      barButton.shouldHideBadgeAtZero = NO;
-    NSString *hi = [NSString stringWithFormat:@"%d", queueCount];
-    barButton.badgeValue = hi;
-
+    barButton.shouldHideBadgeAtZero = NO;
+    //NSString *hi = [NSString stringWithFormat:@"%d", queueCount];
+    //barButton.badgeValue = hi;
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Q"];
+    [query orderByAscending:@"updatedAt"];
+    NSArray *objects = [query findObjects];
+    int positionInQueue = 0;
+    int index = 0;
+    for (PFObject *obj in objects) {
+        if([obj[@"uuid"] isEqualToString: self.UUID])
+        {
+            positionInQueue = index;
+            barButton.badgeValue = [NSString stringWithFormat:@"%d", positionInQueue];
+            NSLog(@"Position in queue set to index %d", index);
+        }
+        NSLog(@"queue has this many elements: %lu", (unsigned long)[objects count]);
+        index++;
+    }
+    
     
     barButton.badgeOriginX = 13;
     barButton.badgeOriginY = -9;
     barButton.badgeBGColor = [UIColor whiteColor];
     barButton.badgeTextColor = [UIColor redColor];
-  
-    self.navigationItem.rightBarButtonItem = barButton;
     
+    self.navigationItem.rightBarButtonItem = barButton;
+    self.navigationItem.leftBarButtonItem = barButton;
+    NSLog(@"Exited view did load");
     
 }
+
 
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
@@ -109,8 +147,7 @@ static int queueCount = 1;
     
     PopUpViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"queuepop"];
     MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithViewController:vc];
-    
-    formSheet.presentedFormSheetSize = CGSizeMake(300, 150);
+    formSheet.presentedFormSheetSize = CGSizeMake(300, 75);
     //    formSheet.transitionStyle = MZFormSheetTransitionStyleSlideFromTop;
     formSheet.shadowRadius = 2.0;
     formSheet.shadowOpacity = 0.3;
@@ -128,7 +165,6 @@ static int queueCount = 1;
     // If you want to animate status bar use this code
     formSheet.didTapOnBackgroundViewCompletionHandler = ^(CGPoint location) {
         PopUpViewController *navController = (PopUpViewController *)weakFormSheet.presentedFSViewController;
-
         // navController = image;
         
         /*if ([navController.topViewController isKindOfClass:[MZModalViewController class]]) {
@@ -156,13 +192,30 @@ static int queueCount = 1;
         
     }];
     
-    
+    //********* BAR BUTTON CODE *************//
     NSLog(@"Bar button item pressed");
     BBBadgeBarButtonItem *barButton = (BBBadgeBarButtonItem *)self.navigationItem.rightBarButtonItem;
-    queueCount++;
-    NSString *hi = [NSString stringWithFormat:@"%d", queueCount];
-    barButton.badgeValue = hi;
-   
+    //queueCount++;
+    //NSString *hi = [NSString stringWithFormat:@"%d", queueCount];
+    //barButton.badgeValue = hi;
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Q"];
+    [query orderByAscending:@"updatedAt"];
+    //[query whereKey:@"Q" equalTo:category];
+    NSArray *objects = [query findObjects];
+    int positionInQueue = 0;
+    int index = 0;
+    for (PFObject *obj in objects) {
+        if([obj[@"uuid"] isEqualToString:self.UUID])
+        {
+            positionInQueue = index+1;
+        }
+        index++;
+    }
+    NSLog(@"queue has this many elements: %lu", (unsigned long)[objects count]);
+    barButton.badgeValue = [NSString stringWithFormat:@"%d", positionInQueue];
+    NSLog(@"BADGE VALUES BEING SET TO: %d \n\n\n", positionInQueue);
+    vc.messageLabel.text = [NSString stringWithFormat:@"You are number %d on the waitlist", positionInQueue];
     barButton.shouldAnimateBadge = NO;
     barButton.shouldHideBadgeAtZero = NO;
 }

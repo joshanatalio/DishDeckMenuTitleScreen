@@ -41,7 +41,7 @@
         _priceLabel.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3f];
         [_priceLabel setFont:[UIFont fontWithName:@"Euphemia UCAS" size:12]];
         _priceLabel.textAlignment = NSTextAlignmentRight;
-       // _priceLabel.text = @"$11.99    "; // just for testing purposes
+        // _priceLabel.text = @"$11.99    "; // just for testing purposes
         
         _priceLabel.textColor = [UIColor whiteColor];
         

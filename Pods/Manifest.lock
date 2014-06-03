@@ -12,6 +12,7 @@ PODS:
 
 DEPENDENCIES:
   - BBBadgeBarButtonItem
+  - Bolts
   - CHTCollectionViewWaterfallLayout
   - Facebook-iOS-SDK
   - MZFormSheetController

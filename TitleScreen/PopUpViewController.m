@@ -8,6 +8,7 @@
 
 #import "PopUpViewController.h"
 #import "MZFormSheetController.h"
+#import "Bolts.h"
 
 @interface PopUpViewController ()
 
@@ -16,6 +17,11 @@
 @implementation PopUpViewController
 
 
+- (IBAction)venmoPressed:(id)sender {
+    BFAppLink *links = [BFAppLink appLinkWithSourceURL:[NSURL URLWithString:@"venmo://friend"] targets:nil webURL:[NSURL URLWithString:@"venmo://friend"]];
+    [BFAppLinkNavigation navigateToAppLink: links error:nil];
+    
+}
 
 - (void)viewDidLoad
 {
@@ -24,10 +30,18 @@
     {
         NSLog(@"Food pic is null");
     }
-     self.itemPictureImageView.image = self.foodPic;
+    if(self.foodPic){
+    self.itemPictureImageView.image = self.foodPic;
+    }
+    if(self.foodNameString){
     self.foodNameLabel.text = self.foodNameString;
-    
+    }
+    if(self.priceString){
+    self.priceLabel.text = self.priceString;
+    }
+    if(self.foodDescriptionString){
     self.foodDescriptionLabel.text = self.foodDescriptionString;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -39,20 +53,23 @@
     controller.shouldDismissOnBackgroundViewTap = YES;
     
 }
-
+- (IBAction)okButtonPressed:(id)sender {
+    
+}
+/*
 -(UILabel *)foodNameLabel{
     if(!_foodNameLabel)
     {
         
         _foodNameLabel.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6f];
         [_foodNameLabel setFont:[UIFont fontWithName:@"Euphemia UCAS" size:12]];
-        _foodNameLabel.text = @"Cheeseburger"; // just for testing purposes
         
         _foodNameLabel.textColor = [UIColor blackColor];
     }
     
     return _foodNameLabel;
 }
+*/
 
 - (NSUInteger)supportedInterfaceOrientations
 {
@@ -67,7 +84,7 @@
     [UIView animateWithDuration:0.3 animations:^{
         [self.navigationController.formSheetController setNeedsStatusBarAppearanceUpdate];
     }];
-   
+    
 }
 
 - (UIStatusBarAnimation)preferredStatusBarUpdateAnimation

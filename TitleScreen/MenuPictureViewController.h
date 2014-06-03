@@ -16,4 +16,5 @@
 @property NSMutableArray *foodNameArray;
 @property NSMutableArray *foodPriceArray;
 @property NSMutableArray *foodDescritonArray;
+@property NSString* fromList;
 @end

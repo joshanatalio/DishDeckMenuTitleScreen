@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-BBBadgeBarButtonItem.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,37 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>03103826DD314259906AD225</key>
+		<key>1DB41246D1204B3AAE3494C1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>78B3BF0BCFA34EE1BEA51B48</key>
+		<key>277829E4D7B74C1BB9F372AB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8DE374840E474469914F9462</key>
+		<key>54D8B9AFD12F4C76B5338E91</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A1CB19EF65ED4B25A095924C</key>
+		<key>60E0DE8B278847C2A1801004</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AF8D68F84DE5452CBC3B2904</key>
+		<key>97932AA158844041A5FD0B19</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D65679D0ECCE48FBA6D372BB</key>
+		<key>BF2572FD105D4306ADC98F29</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D71BA02773DB4FC79976B955</key>
+		<key>D65538396BF64837AAF54897</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FBB8D464C5F9483F8FF75AC9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

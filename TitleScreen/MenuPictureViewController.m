@@ -37,8 +37,8 @@
     
     NSLog(@"inside query for pics");
     PFQuery *query = [PFQuery queryWithClassName:@"BJMenu"];
-    query.limit = 100;
-    [query whereKey:@"course" equalTo:category];
+    query.limit = 30;
+    [query whereKey:@"category" equalTo:category];
     NSArray *objects = [query findObjects];
     
     for (PFObject *obj in objects) {
@@ -50,12 +50,13 @@
         NSString *description = [obj objectForKey:@"menuItemDescription"];
         [self.foodNameArray addObject:name];
         [self.foodPriceArray addObject:price];
-        [self.foodDescritonArray addObject:description];
+        if(description)
+            [self.foodDescritonArray addObject:description];
         [self.foodPictureArray addObject:image];
         NSLog(@"Added object");
         NSLog(@"array has this many elements: %d", [self.foodPictureArray count]);
     }
-
+    
     
     
     NSLog(@"End of method. Num Elements: %d", [self.foodPictureArray count]);
@@ -92,20 +93,20 @@
 }
 
 /* This method is used to populate the array of cell sizes. They are randomized to give the waterfall affect */
-
--(NSMutableArray *)cellSizes {
-    if(!_cellSizes)
-    {
-        _cellSizes = [NSMutableArray array]; // make a new array
-        
-        for(NSInteger i = 0; i < CELL_COUNT; i++) //loop to add the sizes in
-        {
-            CGSize size = CGSizeMake(arc4random() % 30 + 50, arc4random() % 30 + 50);
-            _cellSizes[i] = [NSValue valueWithCGSize:size];
-        }
-    }
-    return _cellSizes;
-}
+/*
+ -(NSMutableArray *)cellSizes {
+ if(!_cellSizes)
+ {
+ _cellSizes = [NSMutableArray array]; // make a new array
+ 
+ for(NSInteger i = 0; i < CELL_COUNT; i++) //loop to add the sizes in
+ {
+ CGSize size = CGSizeMake(arc4random() % 30 + 50, arc4random() % 30 + 50);
+ _cellSizes[i] = [NSValue valueWithCGSize:size];
+ }
+ }
+ return _cellSizes;
+ }*/
 
 -(void) dealloc {
     _collectionView.delegate = nil;
@@ -115,32 +116,38 @@
 
 - (void)viewDidLoad
 {
-    
+    [self.navigationController.navigationBar.backItem setHidesBackButton:YES];
     // foodPicArray = [[NSMutableArray alloc]initWithObjects:@"burger.jpg",@"BJs.png",@"Bluefin.png",@"CPK.png",@"Cottage.png",@"DBar.png",@"Eureka.png",@"ExtraordinaryDesserts.png", @"MignonPho.png",@"SabELee.png",@"Tajima.png",@"Snooze.png",@"TGIF.png", nil];
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc]initWithTitle:@"Home" style:UIBarButtonItemStyleBordered target:nil action:nil];
-    backButton.title = @"HOME";
-    self.navigationItem.backBarButtonItem = backButton;
-    [super viewDidLoad];
-    
-    
-    [self queryForPics:@"Entree"];
+    /*UIBarButtonItem *backButton = [[UIBarButtonItem alloc]initWithTitle:@"Home" style:UIBarButtonItemStyleBordered target:nil action:nil];
+     backButton.title = @"MOTHER FREAKING SHIT";
+     self.navigationItem.backBarButtonItem = backButton;
+     */[super viewDidLoad];
+    [self queryForPics:self.fromList];
+   // self.view.backgroundColor = [UIColor blackColor];
     
 	// Do any additional setup after loading the view.
     [self.view addSubview:self.collectionView];
-    UISwipeGestureRecognizer * recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(myRightAction)];
-    [recognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
-    [self.view addGestureRecognizer:recognizer];
-    
+
     // self.view.backgroundColor = [UIColor blackColor];
     
 }
+/*- (IBAction)backButtonPressec:(id)sender {
+ self.navigationItem.backBarButtonItem.title = @"";
+ [self performSegueWithIdentifier:@"toMainSegue" sender:nil];
+ 
+ }*/
 
 
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc]initWithTitle:@"Home" style:UIBarButtonItemStyleBordered target:nil action:nil];
-    self.navigationItem.backBarButtonItem = backButton;
-    
+    //UIBarButtonItem *backButton = [[UIBarButtonItem alloc]initWithTitle:@"MOTHER" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    /*UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"DollarSign.png"] style:UIBarButtonItemStylePlain target:self action:nil];
+     self.navigationItem.backBarButtonItem = backButton;
+     */
+    //[self.navigationItem.backBarButtonItem delete:nil];
+    //if(self.navigationItem.backBarButtonItem)
+    //  NSLog(@"Exists inside view did appear");
+    self.navigationItem.backBarButtonItem.title = @"";
     [self updateLayoutForOrientation:[UIApplication sharedApplication].statusBarOrientation];
 }
 
@@ -219,19 +226,50 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     //UIImage *image = [UIImage imageNamed:[foodPicArray objectAtIndex:indexPath.row]];
-    UIImage *image = [self.foodPictureArray objectAtIndex:indexPath.row];
-    NSString *foodName = [self.foodNameArray objectAtIndex:indexPath.row];
-    NSString *foodDescription = [self.foodDescritonArray objectAtIndex:indexPath.row];
+    UIImage *image;
+    NSString *foodName;
+    NSString *foodDescription;
+    NSString *priceTagString;
+    
+    if(indexPath.row < [self.foodPictureArray count]){
+        image = [self.foodPictureArray objectAtIndex:indexPath.row];
+    }
+    
+    if(indexPath.row < [self.foodNameArray count]){
+        foodName = [self.foodNameArray objectAtIndex:indexPath.row];
+    }
+    
+    if(indexPath.row < [self.foodDescritonArray count]){
+        foodDescription = [self.foodDescritonArray objectAtIndex:indexPath.row];
+        NSLog(@"Tried to access description");
+        
+    }
+    
+    if(indexPath.row < [self.foodPriceArray count]){
+        priceTagString =  [NSString stringWithFormat:@"$%@",[self.foodPriceArray objectAtIndex:indexPath.row]];
+    }
+    
+    
+    
     if(image)
     {
         NSLog(@"image is not null");
     }
     
     PopUpViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"popup"];
-    
-    vc.foodPic = image; // set the pop up image
-    vc.foodNameString = foodName;
-    vc.foodDescriptionString = foodDescription;
+    if(image){
+        vc.foodPic = image; // set the pop up image
+    }
+    if(foodName){
+        vc.foodNameString = foodName;
+    }
+    if(foodDescription){
+        vc.foodDescriptionString = foodDescription;
+         NSLog(@"Tried to set description");
+    }
+    if(priceTagString){
+        vc.priceString = priceTagString;
+    }
     MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithViewController:vc];
     
     formSheet.presentedFormSheetSize = CGSizeMake(300, 298);
@@ -311,9 +349,6 @@
         
         NSLog(@"tried to put the picture on the form sheet");
         //vc.pic = sender;
-        
-        
-        
     }
     
     
@@ -322,11 +357,12 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     CGSize nsize;
-    UIImage *photo = self.foodPictureArray[indexPath.section];
+    UIImage *photo = self.foodPictureArray[indexPath.row];
     
     if(!photo)
     {
         nsize = CGSizeZero;
+        NSLog(@"Got in the if statement in sixeforItemAtIndexPath");
     }
     else{
         //CGSize newsize = CGRectMake(0, 0, photo.size.width*2, photo.size.height*2);

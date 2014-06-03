@@ -20,8 +20,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-   
-   
     
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"Dine Bar.png"] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xFF3A2D)];
@@ -49,7 +47,11 @@
     _beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid identifier:@"test"];
     [_locationManager startMonitoringForRegion:_beaconRegion];
    
+    PFQuery *query = [PFQuery queryWithClassName:@"Q"];
+    [query whereKey:@"uuid" equalTo:self.UUID];
+    [[query getFirstObject] deleteInBackground];
     
+
     return YES;
 }
 
@@ -162,7 +164,7 @@
 }
 
 -(void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region {
-    NSLog(@"REACHED");
+    //NSLog(@"REACHED");
     CLBeacon *beacon = [[CLBeacon alloc] init];
     beacon = [beacons lastObject];
     
@@ -170,32 +172,66 @@
         
         self.ibeaconstatusLabel.text = @"Connected!";
         self.statusLabel.text = @"Unknown Proximity";
+        //NSLog(@"Proximity Unknown");
         
     } else if (beacon.proximity == CLProximityImmediate) {
         
         self.statusLabel.text = @"Immediate";
         self.ibeaconstatusLabel.text = @"Connected!";
+        //NSLog(@"Proximity Immediate");
         
     } else if (beacon.proximity == CLProximityNear) {
         
         self.statusLabel.text = @"Near";
         self.ibeaconstatusLabel.text = @"Connected!";
+        
+        //[query whereKey:@"Q" equalTo:category];
+        //PFObject *objToDelete = [query getFirstObject];
+        //[objToDelete deleteInBackground];
+        
         if(self.flag)
         {
-            PFObject* object = [PFObject objectWithClassName:@"Q"];
-            object[@"uuid"] = self.UUID;
-            [object saveInBackground];
+            PFQuery *query = [PFQuery queryWithClassName:@"Q"];
+            [query whereKey:@"uuid" equalTo:self.UUID];
+            [[query getFirstObject] deleteInBackground];
+            
+            UIAlertView *addedToQ = [[UIAlertView alloc] initWithTitle:@"Queue Add" message:@"Do you want to be added to the queue" delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:@"YES", nil];
+            //addedToQ = [addedToQ initWithTitle:@"Queue" message:@"Do you want to be added to the queue" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"YES!", nil];
+            [addedToQ show];
+            NSLog(@"Alert view launched and object going to be added");
             self.flag = false;
         }
+        //NSLog(@"Proximity Near");
         
     } else if (beacon.proximity == CLProximityFar) {
         
         self.statusLabel.text = @"Far";
         self.ibeaconstatusLabel.text = @"Connected!";
-        
+        //NSLog(@"Proximity Far");
         
     }
     //NSLog(@"didRangeBeacons");
+}
+
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"inside clicked button at index \n \n \n \n \n \n");
+    if(buttonIndex == 0)
+    {
+        //cancel button
+        NSLog(@"cancel button \n");
+        //self.flag = true;
+
+    }
+    if(buttonIndex == 1)
+    {
+        //YES button
+        NSLog(@"YES button \n");
+        PFObject* object = [PFObject objectWithClassName:@"Q"];
+        object[@"uuid"] = self.UUID;
+        [object saveInBackground];
+        self.flag = false;
+    }
 }
 
 -(void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
