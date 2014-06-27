@@ -21,5 +21,5 @@ ready for them.
 
 For more information feel free to email me at: josh@anatalio.net.
 
-We do not own any of the restuarant logos, menu items, or trademark names. All these things are owneed by their repsecive
+We do not own any of the restuarant logos, menu items, or trademark names. All these things are owned by their repsecive
 restaurants. 
